@@ -1,5 +1,7 @@
 package br.com.aula4.beans;
 
+import java.util.Optional;
+
 public class ContaBancaria {
     private Banco banco;
     private int agencia;
@@ -108,8 +110,13 @@ public class ContaBancaria {
     }
 
     public String extrato() {
+        String valor="";
+        if (this.banco != null)
+            valor = String.valueOf(banco.getIdBancario());
+
         return "ContaBancaria{" +
-                "agencia=" + agencia +
+                "banco = " + valor +
+                ", agencia=" + agencia +
                 ", numero=" + numero +
                 ", saldo=" + saldo +
                 ", limiteCredito=" + limiteCredito +
