@@ -11,17 +11,33 @@ public class ExecutarControleAcessoSET {
         System.out.println("-- Iniciando Controle de Acesso");
 
         while (true) {
-            String cracha = JOptionPane.showInputDialog("Leitor CRACHA:");
+            String tipo = JOptionPane.showInputDialog("Digite <E>ntrada ou <S>aida");
 
-            if (!controleAcesso.contains(cracha)) {
-                controleAcesso.add(cracha);
-                JOptionPane.showMessageDialog(null, "Bem vindo! \n\t Acesso LIBERADO " + cracha);
+            if (tipo.equalsIgnoreCase("E") || tipo.equalsIgnoreCase("S") ) {
+
+                if (tipo.equalsIgnoreCase("E")) {
+                    String cracha = JOptionPane.showInputDialog("Leitor CRACHA:");
+                    if (!controleAcesso.contains(cracha)) {
+                        controleAcesso.add(cracha);
+                        JOptionPane.showMessageDialog(null, "Bem vindo! \n\t Acesso LIBERADO " + cracha);
+                    } else {
+                        JOptionPane.showMessageDialog(null, "Entrada já registrada para esse cracha:" + cracha);
+                    }
+                }
+
+                if (tipo.equalsIgnoreCase("S")) {
+                    String cracha = JOptionPane.showInputDialog("Leitor CRACHA:");
+                    if (controleAcesso.contains(cracha)) {
+                        controleAcesso.remove(cracha);
+                        JOptionPane.showMessageDialog(null, "Obrigado pela visita! " + cracha);
+                    } else {
+                        JOptionPane.showMessageDialog(null, "Entrada NÂO registrada para esse cracha:" + cracha);
+                    }
+                }
+                System.out.println(controleAcesso);
             } else {
-                controleAcesso.remove(cracha);
-                JOptionPane.showMessageDialog(null, "Obrigado pela visita! " + cracha);
+                JOptionPane.showMessageDialog(null,"Valor invalido..!!");
             }
-
-            System.out.println(controleAcesso);
         }
     }
 }
