@@ -13,14 +13,20 @@ public class ExecutarControleException {
 
             JOptionPane.showMessageDialog(null, "Resultado: " + (vl1 / vl2));
 
-        } catch (NumberFormatException ex){
-            JOptionPane.showMessageDialog(null,"Estamos com instabilidade..");
-            throw new ControleException("EMAIL", ex );
-
+        } catch (NumberFormatException ex) {
+            JOptionPane.showMessageDialog(null, "Estamos com instabilidade..");
+            throw new ControleException("EMAIL", ex);
+        } catch (ArithmeticException ex){
+            JOptionPane.showMessageDialog(null, "Estamos com instabilidade..");
+            throw new ControleException("LOG", ex);
         } catch (Exception ex){
             JOptionPane.showMessageDialog(null,"Operação Invalida");
             throw new ControleException("ERRO", ex );
+        } finally {
+            JOptionPane.showMessageDialog(null,"Processo Finalizado");
         }
+
+        System.out.println("FIM.");
 
     }
 }

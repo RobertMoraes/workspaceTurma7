@@ -12,6 +12,17 @@ public class ControleException extends Exception{
         if (message.equalsIgnoreCase("email")){
             enviarEmail();
         }
+
+        if (message.equalsIgnoreCase("log")){
+            logbanco();
+        }
+    }
+
+    private void logbanco() {
+        System.out.println("-Abrindo Conexao BD");
+        System.out.println("-----Gravando Detalhes----");
+        System.out.println(getMessage());
+        printStackTrace();
     }
 
     private void enviarEmail() {
